@@ -1,1 +1,2 @@
 # theplatery-frontend
+# the-platery
