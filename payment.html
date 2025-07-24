@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payment | The Platery</title>
+  <link rel="icon" href="assets/favicon.ico"/>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fdfcfb;
+    }
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+    }
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+    }
+  </style>
+</head>
+<body class="text-gray-800">
+<header class="fixed top-0 left-0 right-0 z-50 py-4 px-6 bg-white border-b border-gray-200">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <a href="index.html" class="text-3xl font-serif font-bold tracking-tight">The Platery</a>
+    <nav class="hidden md:flex space-x-6 text-sm font-semibold">
+      <a href="index.html" class="hover:text-black">Home</a>
+      <a href="about.html" class="hover:text-black">About</a>
+      <a href="classes.html" class="hover:text-black">Classes</a>
+      <a href="book.html" class="hover:text-black">Book Now</a>
+      <a href="contact.html" class="hover:text-black">Contact</a>
+      <a href="profile.html" id="accountLink" class="hover:text-black hidden">My Account</a>
+      <button id="logoutBtn" class="hover:text-black hidden">Logout</button>
+      <a href="signin.html" id="signinLink" class="hover:text-black">Sign In</a>
+      <a href="signup.html" id="signupLink" class="hover:text-black">Sign Up</a>
+    </nav>
+    <button class="md:hidden" id="mobileMenuBtn" style="width: 44px; height: 44px; background-color: rgba(0,0,0,0.8); border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+      <div style="width: 20px; height: 2px; background: white; margin: 3px 0;"></div>
+      <div style="width: 20px; height: 2px; background: white; margin: 3px 0;"></div>
+      <div style="width: 20px; height: 2px; background: white; margin: 3px 0;"></div>
+    </button>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden px-6 py-4 space-y-2 text-sm font-semibold bg-white border-t border-gray-200">
+    <a href="index.html" class="block">Home</a>
+    <a href="about.html" class="block">About</a>
+    <a href="classes.html" class="block">Classes</a>
+    <a href="book.html" class="block">Book Now</a>
+    <a href="contact.html" class="block">Contact</a>
+    <a href="profile.html" id="mobileAccountLink" class="block hidden">My Account</a>
+    <button id="mobileLogoutBtn" class="block hidden">Logout</button>
+    <a href="signin.html" id="mobileSigninLink" class="block">Sign In</a>
+    <a href="signup.html" id="mobileSignupLink" class="block">Sign Up</a>
+  </div>
+</header>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+    document.getElementById('accountLink').style.display = isLoggedIn ? 'inline' : 'none';
+    document.getElementById('logoutBtn').style.display = isLoggedIn ? 'inline' : 'none';
+    document.getElementById('signinLink').style.display = isLoggedIn ? 'none' : 'inline';
+    document.getElementById('signupLink').style.display = isLoggedIn ? 'none' : 'inline';
+
+    document.getElementById('mobileAccountLink').style.display = isLoggedIn ? 'block' : 'none';
+    document.getElementById('mobileLogoutBtn').style.display = isLoggedIn ? 'block' : 'none';
+    document.getElementById('mobileSigninLink').style.display = isLoggedIn ? 'none' : 'block';
+    document.getElementById('mobileSignupLink').style.display = isLoggedIn ? 'none' : 'block';
+
+    document.getElementById('logoutBtn').addEventListener('click', function () {
+      localStorage.removeItem('isLoggedIn');
+      window.location.href = 'index.html';
+    });
+    document.getElementById('mobileLogoutBtn').addEventListener('click', function () {
+      localStorage.removeItem('isLoggedIn');
+      window.location.href = 'index.html';
+    });
+    document.getElementById('mobileMenuBtn').addEventListener('click', function () {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+  });
+</script>
+
+
+  <!-- Nav -->
+  
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+    const signinLink = document.getElementById("signinLink");
+    const signupLink = document.getElementById("signupLink");
+    const accountLink = document.getElementById("accountLink");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    if (isLoggedIn) {
+      signinLink.style.display = "none";
+      signupLink.style.display = "none";
+      accountLink.style.display = "inline";
+      logoutBtn.style.display = "inline";
+    }
+
+    logoutBtn?.addEventListener("click", () => {
+      localStorage.removeItem("isLoggedIn");
+      window.location.href = "index.html";
+    });
+  });
+</script>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+    const signinLink = document.getElementById("signinLink");
+    const signupLink = document.getElementById("signupLink");
+    const accountLink = document.getElementById("accountLink");
+
+    if (isLoggedIn) {
+      signinLink.style.display = "none";
+      signupLink.style.display = "none";
+      accountLink.style.display = "inline";
+    }
+  });
+</script>
+
+
+  <!-- Payment Section -->
+  <section class="pt-32 pb-20 px-6 bg-white min-h-screen" data-aos="fade-up">
+    <div class="max-w-xl mx-auto text-center mb-10">
+      <h1 class="text-4xl font-bold mb-4">Payment Details</h1>
+      <p class="text-gray-600">Complete your class booking with secure payment.</p>
+    </div>
+
+    <div class="max-w-xl mx-auto bg-gray-50 p-8 rounded-xl shadow-md space-y-6">
+      <div>
+        <label class="block font-medium mb-2">Cardholder Name</label>
+        <input type="text" class="w-full border border-gray-300 rounded-lg p-3" placeholder="Your Full Name"/>
+      </div>
+
+      <div>
+        <label class="block font-medium mb-2">Card Number</label>
+        <input type="text" class="w-full border border-gray-300 rounded-lg p-3" placeholder="1234 5678 9012 3456"/>
+      </div>
+
+      <div class="flex space-x-4">
+        <div class="flex-1">
+          <label class="block font-medium mb-2">Expiry</label>
+          <input type="text" class="w-full border border-gray-300 rounded-lg p-3" placeholder="MM/YY"/>
+        </div>
+        <div class="flex-1">
+          <label class="block font-medium mb-2">CVV</label>
+          <input type="text" class="w-full border border-gray-300 rounded-lg p-3" placeholder="123"/>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-2">
+        <input type="checkbox" id="saveCard" class="w-4 h-4 text-black border-gray-300 rounded"/>
+        <label for="saveCard" class="text-sm text-gray-600">Save this card for future bookings</label>
+      </div>
+
+      <div class="text-right font-medium text-gray-800">
+        Total: <span class="text-lg font-bold">EGP 250</span>
+      </div>
+
+      <div>
+        <button onclick='processPayment()'  onclick='processPayment()'  class="w-full py-3 px-6 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition">
+          Pay Now
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-8 px-6">
+    <div class="max-w-6xl mx-auto text-center text-sm">
+      <p>&copy; 2025 The Platery. Payment secured with care.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+      const signin = document.getElementById("signinLink");
+      const signup = document.getElementById("signupLink");
+      const nav = document.querySelector("nav");
+
+      if (isLoggedIn) {
+        if (signin) signin.style.display = "none";
+        if (signup) signup.style.display = "none";
+
+        if (!document.getElementById("profileLink") && nav) {
+          const profileLink = document.createElement("a");
+          profileLink.href = "profile.html";
+          profileLink.id = "profileLink";
+          profileLink.textContent = "My Account";
+          profileLink.className = "hover:text-black";
+          nav.appendChild(profileLink);
+        }
+      }
+    });
+  </script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init({ duration: 800, once: true });</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    if (localStorage.getItem("bookingConfirmed") !== "true") {
+      window.location.href = "book.html";
+    }
+  });
+
+  function processPayment() {
+    alert("Payment successful.");
+    localStorage.removeItem("bookingConfirmed");
+    window.location.href = "thankyou.html";
+  }
+</script>
+</body>
+
+</html>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    if (localStorage.getItem("bookingConfirmed") !== "true") {
+      window.location.href = "book.html";
+    }
+  });
+
+  function processPayment() {
+    alert("Payment successful.");
+    localStorage.removeItem("bookingConfirmed");
+    window.location.href = "thankyou.html";
+  }
+</script>
